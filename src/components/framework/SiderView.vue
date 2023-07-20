@@ -2,7 +2,7 @@
   <a-layout-sider
       :style="{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0, top: 0, bottom: 0 }"
   >
-    <div class="logo" />
+    <div class="logo"></div>
     <a-menu
       class="scroll"
       :open-keys="openKeys"
@@ -16,7 +16,7 @@
         <template v-if="router.menuShow">
           <a-sub-menu :key="router.path">
             <template #icon>
-              <component :is="router.icon" />
+              <component :is="router.icon as any" />
             </template>
             <template #title>{{ router.name }}</template>
             <a-menu-item :class="selectItem(router.path, subRouter.path)" v-for="subRouter in router.children" :key="router.path + '/' + subRouter.path">
@@ -66,7 +66,7 @@ export default defineComponent({
         state.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
     };
-
+    
     return {
       ...toRefs(state),
       menuClick,
@@ -83,7 +83,10 @@ export default defineComponent({
 <style scoped>
 .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+  background-image: url(../../assets/image/Chpmore.png);
+  background-size: contain; /* 使背景图片等比例缩放以适应容器 */
+  background-repeat: no-repeat; /* 不重复平铺背景图片 */
 }
+
 </style>

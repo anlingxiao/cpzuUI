@@ -5,12 +5,12 @@ import staticRouter from "@/store/static-router";
 const localRoutes: Array<RouteRecordRaw> = [];
 
 staticRouter.routes.forEach(v => {
-  localRoutes.push({
-    path: v.path,
-    name: v.name,
-    component: v.component,
-    children: v.children
-  })
+    localRoutes.push({
+      path: v.path,
+      name: v.name,
+      component: v.component,
+      children: v.children
+    })
 });
 
 const router = createRouter({
@@ -21,8 +21,8 @@ const router = createRouter({
 router.beforeEach((to) => {
   console.log('前往路由:', to.path);
   // 跳转默认路由
-  if(to.path == '/')
-    router.push('/table/example1').then(() => {
+  if (to.path == '/')
+    router.push('/account/login').then(() => {
       return;
     })
 });
